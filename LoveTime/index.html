@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>相爱时光</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="icon" type="image/x-icon" href="logo.jpg" />
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+
+		#music_btn2 {
+			position: fixed;
+			right: 5px;
+			top: 5px;
+			width: 80px;
+			height: 80px;
+			border: 0;
+			-webkit-animation: music_ntn2 4s linear 0s infinite;
+			animation: music_ntn2 4s linear 0s infinite;
+			z-index: 9999999999;
+		}
+
+		@-webkit-keyframes music_ntn2 {
+			from {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg)
+			}
+
+			to {
+				-webkit-transform: rotate(1080deg);
+				transform: rotate(1080deg)
+			}
+		}
+
+		@keyframes music_ntn2 {
+			from {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg)
+			}
+
+			to {
+				-webkit-transform: rotate(1080deg);
+				transform: rotate(1080deg)
+			}
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+	<div id="mainDiv">
+		<audio id="music2" autoplay="autoplay" loop="loop" src="my.mp3">你的浏览器不支持audio标签。</audio>
+		<a href="javascript:playPause();">
+			<img src="musicoff.png" id="music_btn2" class="music_btn2">
+		</a>
+		<div id="content">
+			<div id="code">
+				<span class="comments">/**</span><br />
+				<span class="space" /><span class="comments">* 我是一名IT直男</span><br />
+				<span class="space" /><span class="comments">* 不懂得怎么浪漫</span><br />
+				<span class="space" /><span class="comments">*/</span><br />
+				Boy i = <span class="keyword">new</span> Boy(<span class="string">"凌肥肥"</span>);<br />
+				Girl u = <span class="keyword">new</span> Girl(<span class="string">"小可爱（林子媚）"</span>);<br />
+				<span class="comments">2020年1月5号晚上，我向你表白，</span><br />
+				让你做我女朋友。<br />
+				<span class="comments">过程虽然有点坎坷，</span><br />
+				但你最终还是答应了。<br />
+				<span class="comments">从那以后，你成了我的小可爱，</span><br />
+				我每天都在想你。<br />
+				<span class="comments">每天和你说早安，晚安，</span><br />
+				这成了我的习惯。<br />
+				<span class="comments">我们一起买菜做饭，</span><br />
+				成了我们的生活。<br />
+				<span class="comments">你说过：新鲜感过后，会回归平淡</span><br />
+				但我们早已平淡地走进了彼此的心<br />
+				<span class="comments">希望我们可以一直手牵手走下去，</span><br />
+				长长久久。
+				<br />
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						小可爱（林子媚），我爱你
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						爱你到天荒地老<br />
+						<div class="signature">- 凌肥肥</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="copyright">
+			Inspired by <a href="#">LHC087</a> project.<br />
+			Copyright © 2020 <a href='#'>凌肥肥</a> 2020-01-05
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript">
+	var offsetX = $("#loveHeart").width() / 2;
+	var offsetY = $("#loveHeart").height() / 2 - 55;
+	var together = new Date();
+	together.setFullYear(2020, 0, 5);
+	together.setHours(20);
+	together.setMinutes(0);
+	together.setSeconds(0);
+	together.setMilliseconds(0);
+	if (!document.createElement('canvas').getContext) {
+		var msg = document.createElement("div");
+		msg.id = "errorMsg";
+		msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+		document.body.appendChild(msg);
+		$("#code").css("display", "none")
+		$("#copyright").css("position", "absolute");
+		$("#copyright").css("bottom", "10px");
+		document.execCommand("stop");
+	} else {
+		setTimeout(function () {
+			startHeartAnimation();
+		}, 5000);
+		timeElapse(together);
+		setInterval(function () {
+			timeElapse(together);
+		}, 500);
+		adjustCodePosition();
+		$("#code").typewriter();
+	}
+
+	function playPause() {
+		var music = document.getElementById('music2');
+		var music_btn = document.getElementById('music_btn2');
+		console.log(music.paused)
+		if (music.paused) {
+			console.log(1)
+			music.play();
+			// document.addEventListener("WeixinJSBridgeReady", function () {
+			// 	music.play();
+			// }, false);
+			music_btn.src = 'musicon.png';
+		} else {
+			console.log(2)
+			music.pause();
+			// document.addEventListener("WeixinJSBridgeReady", function () {
+			// 	music.pause();
+			// }, false);
+			music_btn.src = 'musicoff.png';
+		}
+	}
+</script>
+
+</html>
